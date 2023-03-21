@@ -1,0 +1,17 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Trabalho adicionado ${{ github.event_name }} event."
+      - run: echo "Trabalho executado em um servidor ${{ runner.os }} hospedado no github!"
+      - run: echo "Nome do Branch${{ github.ref }} e o repositorio é ${{ github.repository }}."
+      - name: Veja o repositorio
+        uses: actions/checkout@v3
+      - run: echo "O repositorio ${{ github.repository }} foi clonado"
+      - run: echo "Fluxo de trabalho pronto"
+      - name: listar arquivos no repositorio
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "O status desse trabalho é ${{ job.status }}."
